@@ -8,6 +8,7 @@ namespace Manager_de_Jeu.Services
 {
     using System;
     using System.Data;
+    using Manager_de_Jeu.Models;
     using MySql.Data.MySqlClient;
 
     public class GameService
@@ -25,6 +26,27 @@ namespace Manager_de_Jeu.Services
                 }
             }
             return dt;
+        }
+
+        public List<Game> GetAllGamesAsList()
+        {
+            DataTable dt = GetAllGames();
+            List<Game> games = new List<Game>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                games.Add(new Game
+                {
+                    Id = Convert.ToInt32(row["Id"]),
+                    Name = row["Name"].ToString(),
+                    Description = row["Description"].ToString(),
+                    MinPlayers = Convert.ToInt32(row["MinPlayers"]),
+                    MaxPlayers = Convert.ToInt32(row["MaxPlayers"]),
+                    NumberOfCards = Convert.ToInt32(row["NumberOfCards"]),
+                    DateAdded = Convert.ToDateTime(row["DateAdded"])
+                });
+            }
+            return games;
         }
 
         public bool AddGame(string name, string description, int minPlayers, int maxPlayers, int numberOfCards)

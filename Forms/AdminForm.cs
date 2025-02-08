@@ -27,26 +27,22 @@ namespace Manager_de_Jeu.Forms
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if (dgvGames.SelectedRows.Count > 0)
+            bool result = _gameService.AddGame(
+            txtName.Text,
+            txtDescription.Text,
+            (int)numMinPlayers.Value,
+            (int)numMaxPlayers.Value,
+            (int)numCards.Value
+        );
+
+            if (result)
             {
-                int gameId = Convert.ToInt32(dgvGames.SelectedRows[0].Cells["Id"].Value);
-                bool result = _gameService.UpdateGame(
-                    gameId,
-                    txtName.Text,
-                    txtDescription.Text,
-                    (int)numMinPlayers.Value,
-                    (int)numMaxPlayers.Value,
-                    (int)numCards.Value
-                );
-                if (result)
-                {
-                    MessageBox.Show("Jeu mis à jour.");
-                    LoadGames();
-                }
-                else
-                {
-                    MessageBox.Show("Erreur lors de la mise à jour.");
-                }
+                MessageBox.Show("Jeu ajouté avec succès.");
+                LoadGames();
+            }
+            else
+            {
+                MessageBox.Show("Erreur lors de l'ajout du jeu.");
             }
         }
 
