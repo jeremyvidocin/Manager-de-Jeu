@@ -23,6 +23,10 @@ namespace Manager_de_Jeu.Forms
         private void LoadGames()
         {
             dgvGames.DataSource = _gameService.GetAllGames();
+            dgvGames.ReadOnly = true;
+            dgvGames.AllowUserToAddRows = false;
+            dgvGames.AllowUserToDeleteRows = false;
+            dgvGames.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -96,6 +100,11 @@ namespace Manager_de_Jeu.Forms
             numMinPlayers.Value = numMinPlayers.Minimum;
             numMaxPlayers.Value = numMaxPlayers.Minimum;
             numCards.Value = numCards.Minimum;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

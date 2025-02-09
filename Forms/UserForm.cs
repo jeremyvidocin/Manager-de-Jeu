@@ -27,11 +27,24 @@ namespace Manager_de_Jeu.Forms
         {
             dgvGames.DataSource = _searchService.SortGames(cboSort.SelectedItem.ToString());
             lblTotalGames.Text = $"Total de jeux : {((DataTable)dgvGames.DataSource).Rows.Count}";
+            
+
         }
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-
+            dgvGames.ReadOnly = true;
+            dgvGames.AllowUserToAddRows = false;
+            dgvGames.AllowUserToDeleteRows = false;
+            dgvGames.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            // Supposons que la colonne "Id" ne soit pas pertinente pour l'utilisateur final
+            if (dgvGames.Columns.Contains("Id"))
+            {
+                dgvGames.Columns["Id"].Visible = false;
+            }
+            dgvGames.ColumnHeadersDefaultCellStyle.BackColor = System.Drawing.Color.Navy;
+            dgvGames.ColumnHeadersDefaultCellStyle.ForeColor = System.Drawing.Color.White;
+            dgvGames.ColumnHeadersDefaultCellStyle.Font = new Font(dgvGames.Font, FontStyle.Bold);
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)

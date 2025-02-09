@@ -26,60 +26,74 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
+        /// 
+
         private void InitializeComponent()
         {
-            txtUsername = new TextBox();
-            txtPassword = new TextBox();
-            btnLogin = new Button();
-            lblError = new Label();
-            SuspendLayout();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.btnLogin = new System.Windows.Forms.Button();
+            this.lblError = new System.Windows.Forms.Label();
+            this.SuspendLayout();
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(93, 61);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(100, 23);
-            txtUsername.TabIndex = 0;
+            this.txtUsername.Location = new System.Drawing.Point(150, 30);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(150, 23);
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(349, 61);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(100, 23);
-            txtPassword.TabIndex = 4;
+            this.txtPassword.Location = new System.Drawing.Point(150, 70);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(150, 23);
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(228, 176);
-            btnLogin.Name = "btnLogin";
-            btnLogin.Size = new Size(75, 23);
-            btnLogin.TabIndex = 2;
-            btnLogin.Text = "button1";
-            btnLogin.UseVisualStyleBackColor = true;
-            btnLogin.Click += btnLogin_Click;
+            this.btnLogin.Location = new System.Drawing.Point(150, 110);
+            this.btnLogin.Name = "btnLogin";
+            this.btnLogin.Size = new System.Drawing.Size(150, 30);
+            this.btnLogin.Text = "Se connecter";
+            this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // lblError
             // 
-            lblError.AutoSize = true;
-            lblError.Location = new Point(167, 256);
-            lblError.Name = "lblError";
-            lblError.Size = new Size(38, 15);
-            lblError.TabIndex = 3;
-            lblError.Text = "label1";
+            this.lblError.Location = new System.Drawing.Point(30, 150);
+            this.lblError.Name = "lblError";
+            this.lblError.Size = new System.Drawing.Size(270, 23);
+            this.lblError.ForeColor = System.Drawing.Color.Red;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.Location = new System.Drawing.Point(30, 30);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(110, 23);
+            this.lblUsername.Text = "Nom d'utilisateur :";
+            // 
+            // lblPassword
+            // 
+            this.lblPassword.Location = new System.Drawing.Point(30, 70);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(110, 23);
+            this.lblPassword.Text = "Mot de passe :";
             // 
             // LoginForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(lblError);
-            Controls.Add(btnLogin);
-            Controls.Add(txtPassword);
-            Controls.Add(txtUsername);
-            Name = "LoginForm";
-            Text = "LoginForm";
-            ResumeLayout(false);
-            PerformLayout();
+            this.ClientSize = new System.Drawing.Size(350, 200);
+            this.Controls.Add(this.lblUsername);
+            this.Controls.Add(this.txtUsername);
+            this.Controls.Add(this.lblPassword);
+            this.Controls.Add(this.txtPassword);
+            this.Controls.Add(this.btnLogin);
+            this.Controls.Add(this.lblError);
+            this.Name = "LoginForm";
+            this.Text = "Connexion";
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
@@ -88,5 +102,7 @@
         private TextBox txtPassword;
         private Button btnLogin;
         private Label lblError;
+        private Label lblUsername;
+        private Label lblPassword;
     }
 }

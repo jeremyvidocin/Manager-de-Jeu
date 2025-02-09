@@ -28,62 +28,80 @@
         /// </summary>
         private void InitializeComponent()
         {
-            dgvGames = new DataGridView();
-            txtSearch = new TextBox();
-            cboSort = new ComboBox();
-            lblTotalGames = new Label();
-            ((System.ComponentModel.ISupportInitialize)dgvGames).BeginInit();
-            SuspendLayout();
+            this.dgvGames = new System.Windows.Forms.DataGridView();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.lblSort = new System.Windows.Forms.Label();
+            this.cboSort = new System.Windows.Forms.ComboBox();
+            this.lblTotalGames = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGames)).BeginInit();
+            this.SuspendLayout();
             // 
             // dgvGames
             // 
-            dgvGames.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvGames.Location = new Point(12, 12);
-            dgvGames.Name = "dgvGames";
-            dgvGames.Size = new Size(437, 348);
-            dgvGames.TabIndex = 0;
+            this.dgvGames.Location = new System.Drawing.Point(20, 20);
+            this.dgvGames.Name = "dgvGames";
+            this.dgvGames.Size = new System.Drawing.Size(500, 300);
+            this.dgvGames.ReadOnly = true;
+            this.dgvGames.AllowUserToAddRows = false;
+            this.dgvGames.AllowUserToDeleteRows = false;
+            this.dgvGames.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(487, 30);
-            txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(100, 23);
-            txtSearch.TabIndex = 1;
-            txtSearch.TextChanged += txtSearch_TextChanged;
+            this.txtSearch.Location = new System.Drawing.Point(540, 45);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(150, 23);
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // cboSort
             // 
-            cboSort.FormattingEnabled = true;
-            cboSort.Location = new Point(487, 93);
-            cboSort.Name = "cboSort";
-            cboSort.Size = new Size(121, 23);
-            cboSort.TabIndex = 2;
-            cboSort.SelectedIndexChanged += cboSort_SelectedIndexChanged;
+            this.cboSort.Location = new System.Drawing.Point(540, 105);
+            this.cboSort.Name = "cboSort";
+            this.cboSort.Size = new System.Drawing.Size(150, 23);
+            this.cboSort.SelectedIndexChanged += new System.EventHandler(this.cboSort_SelectedIndexChanged);
+            // Supposons que la colonne "Id" ne soit pas pertinente pour l'utilisateur final
+            if (dgvGames.Columns.Contains("Id"))
+            {
+                dgvGames.Columns["Id"].Visible = false;
+            }
+
             // 
             // lblTotalGames
             // 
-            lblTotalGames.AutoSize = true;
-            lblTotalGames.Location = new Point(501, 195);
-            lblTotalGames.Name = "lblTotalGames";
-            lblTotalGames.Size = new Size(38, 15);
-            lblTotalGames.TabIndex = 3;
-            lblTotalGames.Text = "label1";
+            this.lblTotalGames.Location = new System.Drawing.Point(540, 150);
+            this.lblTotalGames.Name = "lblTotalGames";
+            this.lblTotalGames.Size = new System.Drawing.Size(150, 23);
+            this.lblTotalGames.Text = "Total de jeux : 0";
+            // 
+            // lblSearch
+            // 
+            this.lblSearch.Location = new System.Drawing.Point(540, 20);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(100, 23);
+            this.lblSearch.Text = "Rechercher :";
+            // 
+            // lblSort
+            // 
+            this.lblSort.Location = new System.Drawing.Point(540, 80);
+            this.lblSort.Name = "lblSort";
+            this.lblSort.Size = new System.Drawing.Size(100, 23);
+            this.lblSort.Text = "Trier par :";
             // 
             // UserForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(lblTotalGames);
-            Controls.Add(cboSort);
-            Controls.Add(txtSearch);
-            Controls.Add(dgvGames);
-            Name = "UserForm";
-            Text = "UserForm";
-            Load += UserForm_Load;
-            ((System.ComponentModel.ISupportInitialize)dgvGames).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.ClientSize = new System.Drawing.Size(720, 350);
+            this.Controls.Add(this.dgvGames);
+            this.Controls.Add(this.lblSearch);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.lblSort);
+            this.Controls.Add(this.cboSort);
+            this.Controls.Add(this.lblTotalGames);
+            this.Name = "UserForm";
+            this.Text = "Bibliothèque de Jeux";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGames)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
@@ -92,5 +110,7 @@
         private TextBox txtSearch;
         private ComboBox cboSort;
         private Label lblTotalGames;
+        private Label lblSearch;
+        private Label lblSort;
     }
 }
