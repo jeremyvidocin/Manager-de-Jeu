@@ -18,7 +18,7 @@ namespace Manager_de_Jeu.Forms
         {
             InitializeComponent();
             // Optionnel : initialiser le ComboBox avec les champs autorisés pour le tri
-            cboSort.Items.AddRange(new string[] { "Name", "DateAdded", "MinPlayers" });
+            cboSort.Items.AddRange(new string[] { "Nom", "DateAdded", "MinPlayers" });
             cboSort.SelectedIndex = 0;
             LoadGames();
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jerem\\source\\repos\\Manager de Jeu\\Manager de Jeu.csproj": {}
+    "C:\\Users\\jerem\\RiderProjects\\Manager-de-Jeu\\Manager de Jeu.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jerem\\source\\repos\\Manager de Jeu\\Manager de Jeu.csproj": {
+    "C:\\Users\\jerem\\RiderProjects\\Manager-de-Jeu\\Manager de Jeu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jerem\\source\\repos\\Manager de Jeu\\Manager de Jeu.csproj",
+        "projectUniqueName": "C:\\Users\\jerem\\RiderProjects\\Manager-de-Jeu\\Manager de Jeu.csproj",
         "projectName": "Manager de Jeu",
-        "projectPath": "C:\\Users\\jerem\\source\\repos\\Manager de Jeu\\Manager de Jeu.csproj",
+        "projectPath": "C:\\Users\\jerem\\RiderProjects\\Manager-de-Jeu\\Manager de Jeu.csproj",
         "packagesPath": "C:\\Users\\jerem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jerem\\source\\repos\\Manager de Jeu\\obj\\",
+        "outputPath": "C:\\Users\\jerem\\RiderProjects\\Manager-de-Jeu\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -50,6 +50,10 @@
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
           "dependencies": {
+            "Bunifu.UI.WinForms": {
+              "target": "Package",
+              "version": "[7.2.0, )"
+            },
             "MySql.Data": {
               "target": "Package",
               "version": "[9.2.0, )"

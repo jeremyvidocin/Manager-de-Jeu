@@ -37,8 +37,8 @@ namespace Manager_de_Jeu.Services
             {
                 games.Add(new Game
                 {
-                    Id = Convert.ToInt32(row["Id"]),
-                    Name = row["Name"].ToString(),
+                    Id = Convert.ToInt32(row["id"]),
+                    Name = row["nom"].ToString(),
                     Description = row["Description"].ToString(),
                     MinPlayers = Convert.ToInt32(row["MinPlayers"]),
                     MaxPlayers = Convert.ToInt32(row["MaxPlayers"]),
@@ -51,7 +51,7 @@ namespace Manager_de_Jeu.Services
 
         public bool AddGame(string name, string description, int minPlayers, int maxPlayers, int numberOfCards)
         {
-            string query = @"INSERT INTO games (Name, Description, MinPlayers, MaxPlayers, NumberOfCards, DateAdded)
+            string query = @"INSERT INTO games (Nom, Description, MinPlayers, MaxPlayers, NumberOfCards, DateAdded)
                          VALUES (@name, @description, @minPlayers, @maxPlayers, @numberOfCards, @dateAdded)";
             using (var connection = DatabaseConnection.GetConnection())
             {

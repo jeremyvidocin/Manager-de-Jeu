@@ -14,7 +14,7 @@ namespace Manager_de_Jeu.Services
         public DataTable SearchGamesByName(string searchTerm)
         {
             DataTable dt = new DataTable();
-            string query = "SELECT * FROM games WHERE Name LIKE @searchTerm";
+            string query = "SELECT * FROM games WHERE Nom LIKE @searchTerm";
             using (var connection = DatabaseConnection.GetConnection())
             {
                 connection.Open();

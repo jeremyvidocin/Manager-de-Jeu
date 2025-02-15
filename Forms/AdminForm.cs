@@ -1,12 +1,8 @@
 ﻿using Manager_de_Jeu.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing.Drawing2D;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Manager_de_Jeu.Forms
@@ -14,9 +10,11 @@ namespace Manager_de_Jeu.Forms
     public partial class AdminForm : Form
     {
         private readonly GameService _gameService = new GameService();
+
         public AdminForm()
         {
             InitializeComponent();
+            ApplyRoundedCorners();
             LoadGames();
         }
 
@@ -32,12 +30,12 @@ namespace Manager_de_Jeu.Forms
         private void btnAdd_Click(object sender, EventArgs e)
         {
             bool result = _gameService.AddGame(
-            txtName.Text,
-            txtDescription.Text,
-            (int)numMinPlayers.Value,
-            (int)numMaxPlayers.Value,
-            (int)numCards.Value
-        );
+                txtName.Text,
+                txtDescription.Text,
+                (int)numMinPlayers.Value,
+                (int)numMaxPlayers.Value,
+                (int)numCards.Value
+            );
 
             if (result)
             {
@@ -102,9 +100,59 @@ namespace Manager_de_Jeu.Forms
             numCards.Value = numCards.Minimum;
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        // Effets de survol sur les boutons
+        private void Button_MouseEnter(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
+            btn.BackColor = ColorTranslator.FromHtml("#0096A0");
+        }
 
+        private void Button_MouseLeave(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            btn.BackColor = ColorTranslator.FromHtml("#007ACC");
+        }
+
+        // Peinture du panelHeader pour afficher un dégradé
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = sender as Panel;
+            if (panel != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(panel.ClientRectangle,
+                                                                           ColorTranslator.FromHtml("#007ACC"),
+                                                                           ColorTranslator.FromHtml("#005B99"),
+                                                                           90F))
+                {
+                    e.Graphics.FillRectangle(brush, panel.ClientRectangle);
+                }
+            }
+        }
+
+        // Application de coins arrondis aux boutons
+        private void ApplyRoundedCorners()
+        {
+            int radius = 10;
+            btnAdd.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnAdd.Width, btnAdd.Height, radius, radius));
+            btnUpdate.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnUpdate.Width, btnUpdate.Height, radius, radius));
+            btnDelete.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnDelete.Width, btnDelete.Height, radius, radius));
+            btnClear.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnClear.Width, btnClear.Height, radius, radius));
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn
+        (
+            int nLeftRect,     // Coordonnée X du coin supérieur gauche
+            int nTopRect,      // Coordonnée Y du coin supérieur gauche
+            int nRightRect,    // Coordonnée X du coin inférieur droit
+            int nBottomRect,   // Coordonnée Y du coin inférieur droit
+            int nWidthEllipse, // Largeur de l'ellipse
+            int nHeightEllipse // Hauteur de l'ellipse
+        );
+
+        private void panelForm_Paint(object sender, PaintEventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

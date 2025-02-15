@@ -42,6 +42,16 @@ namespace Manager_de_Jeu.Forms
                 lblError.Text = "Nom d'utilisateur ou mot de passe incorrect.";
             }
         }
+        
+        private void btnLogin_MouseEnter(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.FromArgb(0, 96, 160);
+        }
+
+        private void btnLogin_MouseLeave(object sender, EventArgs e)
+        {
+            btnLogin.BackColor = Color.FromArgb(0, 122, 204);
+        }
 
         
     }
