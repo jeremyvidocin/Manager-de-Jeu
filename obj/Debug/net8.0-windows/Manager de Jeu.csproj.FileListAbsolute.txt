@@ -77,3 +77,6 @@ C:\Users\jerem\RiderProjects\Manager-de-Jeu\bin\Debug\net8.0-windows\Newtonsoft.
 C:\Users\jerem\RiderProjects\Manager-de-Jeu\bin\Debug\net8.0-windows\RestSharp.dll
 C:\Users\jerem\RiderProjects\Manager-de-Jeu\bin\Debug\net8.0-windows\System.Management.dll
 C:\Users\jerem\RiderProjects\Manager-de-Jeu\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Management.dll
+C:\Users\jerem\RiderProjects\Manager-de-Jeu\bin\Debug\net8.0-windows\fr-FR\Manager de Jeu.resources.dll
+C:\Users\jerem\RiderProjects\Manager-de-Jeu\obj\Debug\net8.0-windows\Manager_de_Jeu.Forms.LoginForm.fr-FR.resources
+C:\Users\jerem\RiderProjects\Manager-de-Jeu\obj\Debug\net8.0-windows\fr-FR\Manager de Jeu.resources.dll

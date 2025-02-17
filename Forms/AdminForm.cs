@@ -1,4 +1,5 @@
-﻿using Manager_de_Jeu.Services;
+﻿using Bunifu.UI.WinForms;
+using Manager_de_Jeu.Services;
 using System;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -15,7 +16,63 @@ namespace Manager_de_Jeu.Forms
         {
             InitializeComponent();
             ApplyRoundedCorners();
+            ApplyCustomStyles();
             LoadGames();
+        }
+
+        private void ApplyCustomStyles()
+        {
+            // Ajout d'un effet de transparence
+            this.BackColor = Color.White;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.Opacity = 0.95;
+            panelHeader.Paint += PanelHeader_Paint;
+
+            // Ajout d'ombres aux boutons
+            ApplyShadowEffect(btnAdd);
+            ApplyShadowEffect(btnUpdate);
+            ApplyShadowEffect(btnDelete);
+            ApplyShadowEffect(btnClear);
+        }
+
+        private void PanelHeader_Paint(object sender, PaintEventArgs e)
+        {
+            Panel panel = sender as Panel;
+            if (panel != null)
+            {
+                using (LinearGradientBrush brush = new LinearGradientBrush(
+                    panel.ClientRectangle,
+                    ColorTranslator.FromHtml("#007ACC"),
+                    ColorTranslator.FromHtml("#003F7F"),
+                    LinearGradientMode.Vertical))
+                {
+                    e.Graphics.FillRectangle(brush, panel.ClientRectangle);
+                }
+            }
+        }
+
+        private void ApplyShadowEffect(Control control)
+        {
+            BunifuShadowPanel shadowPanel = new BunifuShadowPanel()
+            {
+                BorderColor = Color.WhiteSmoke,
+                BorderRadius = 10,
+                BorderThickness = 1,
+                FillStyle = BunifuShadowPanel.FillStyles.Solid,
+                GradientMode = BunifuShadowPanel.GradientModes.Vertical,
+                PanelColor = Color.WhiteSmoke,
+                PanelColor2 = Color.WhiteSmoke,
+                ShadowColor = Color.DarkGray,
+                ShadowDept = 2,
+                ShadowDepth = 5,
+                ShadowStyle = BunifuShadowPanel.ShadowStyles.Surrounded,
+                ShadowTopLeftVisible = false,
+                Size = control.Size,
+                Location = new Point(control.Location.X - 5, control.Location.Y - 5)
+            };
+            this.Controls.Add(shadowPanel);
+            shadowPanel.BringToFront();
+            control.BringToFront();
         }
 
         private void LoadGames()
